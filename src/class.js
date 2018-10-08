@@ -1,27 +1,20 @@
 'use strict';
 
-const charClass = module.exports = {};
-
-charClass.fighter = {
-  name: 'fighter',
-  level: 1,
-  hp: 10,
-  abs: {
-    str: 15,
-    int: 12,
-    dex: 13,
-    con: 14,
-    wis: 10,
-    cha: 8,
-  },
-  mod: {
-    str: Math.floor((charClass.fighter.abs.str - 10) / 2),
-    int: Math.floor((charClass.fighter.abs.int - 10) / 2),
-    dex: Math.floor((charClass.fighter.abs.dex - 10) / 2),
-    con: Math.floor((charClass.fighter.abs.con - 10) / 2),
-    wis: Math.floor((charClass.fighter.abs.wis - 10) / 2),
-    cha: Math.floor((charClass.fighter.abs.cha - 10) / 2),
-  },
-  weapon: '2H Sword',
-  ac: 13,
+module.exports = class charClass {
+  constructor(abilities, name, hp, weapon, ac) {
+    this.abs = abilities;
+    this.name = name;
+    this.level = 1;
+    this.hp = hp;
+    this.weapon = weapon;
+    this.ac = ac;
+    this.absMod = function () {
+      this.absMod.str = (abilities.str - 10) / 2;
+      this.absMod.int = (abilities.int - 10) / 2;
+      this.absMod.dex = (abilities.dex - 10) / 2;
+      this.absMod.con = (abilities.con - 10) / 2;
+      this.absMod.wiz = (abilities.wiz - 10) / 2;
+      this.absMod.cha = (abilities.cha - 10) / 2;
+    };
+  }
 };
