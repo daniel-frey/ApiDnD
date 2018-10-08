@@ -12,21 +12,10 @@ const characterSchema = mongoose.Schema({
     type: Object,
     required: true,
   },
-  weapon: {
-    type: Object,
-    required: false,
-  },
-  skill: {
-    type: Object,
-    required: false,
-  },
-  health: {
-    type: Number,
+  account: {
+    type: mongoose.Schema.Types.ObjectId,
     required: true,
-  },
-  stats: {
-    type: Object,
-    required: true,
+    ref: 'account',
   },
 });
 
