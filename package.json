@@ -1,0 +1,50 @@
+{
+  "name": "commonjs-modules",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "engines": {
+    "node": "10.8.0"
+  },
+  "scripts": {
+    "test": "eslint . && jest --coverage --forceExit --runInBand",
+    "lint": "eslint .",
+    "dbDevOn": "mkdir -p ./testdb && mongod --dbpath ./testdb",
+    "dbOn": "mkdir -p ./db && mongod --dbpath ./db",
+    "dbOff": "killall mongod",
+    "start": "node src/index.js"
+  },
+  "jest": {
+    "setupFiles": [
+      "<rootDir>/src/__test__/lib/test.env.js"
+    ]
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "aws-sdk-mock": "^4.2.0",
+    "eslint": "^5.5.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jest": "^21.22.0",
+    "faker": "^4.1.0",
+    "jest": "^23.6.0",
+    "superagent": "^4.0.0-beta.5"
+  },
+  "dependencies": {
+    "ask-cli": "^1.4.4",
+    "aws-sdk": "^2.328.0",
+    "bcrypt": "^3.0.1",
+    "body-parser": "^1.18.3",
+    "dotenv": "^6.0.0",
+    "express": "^4.16.3",
+    "http-errors": "^1.7.1",
+    "jsonwebtoken": "^8.3.0",
+    "mongoose": "^5.2.17",
+    "winston": "^3.1.0"
+  }
+}
