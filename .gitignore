@@ -48,6 +48,7 @@ lib-cov
 
 # Coverage directory used by tools like istanbul
 coverage
+db
 
 # nyc test coverage
 .nyc_output
@@ -216,7 +217,7 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
-db/
+
 
 
 # End of https://www.gitignore.io/api/node,macos,windows,webstorm,visualstudiocode
