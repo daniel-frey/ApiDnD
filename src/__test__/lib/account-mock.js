@@ -27,4 +27,4 @@ accountMock.pCreateMock = () => {
     });
 };
 
-accountMock.pCleanAccountMocks = () => Account.remove();
+accountMock.pCleanAccountMocks = () => Account.remove({});
