@@ -1,10 +1,13 @@
 'use strict';
 
-// const dungeon = require('descriptions');
+const dungeonDescriptions = require('./descriptions');
+const roomsByName = require('./rooms');
 
 const dungeonMover = module.exports = {};
 
-dungeonMover.dungeonTraversal = (rms, rmsNames, playDirection, charObj) => {
-  charObj.currentRoom = rms[rmsNames.indexOf(playDirection)];
+dungeonMover.dungeonTraversal = (playDirection, charObj) => {
+  charObj.currentRoom = dungeonDescriptions.dungeonDescriptions[
+    roomsByName.roomList.indexOf(playDirection)
+  ];
   return charObj.currentRoom.description;
 };
