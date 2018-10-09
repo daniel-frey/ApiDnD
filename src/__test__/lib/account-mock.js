@@ -2,6 +2,7 @@
 
 const faker = require('faker');
 const Account = require('../../models/account');
+const logger = require('../../lib/logger');
 
 const accountMock = module.exports = {};
 
@@ -13,7 +14,7 @@ accountMock.pCreateMock = () => {
     email: faker.internet.email(),
   };
 
-  return Account.create(mock.request.username, mock.request.password, mock.request.email)
+  return Account.create(mock.request.username, mock.request.email, mock.request.password)
     .then((createdAccount) => {
       mock.account = createdAccount;
       return createdAccount.pCreateToken();
