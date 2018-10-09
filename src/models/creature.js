@@ -15,5 +15,6 @@ module.exports = class Creature {
       cha: Math.floor((abilities.cha - 10) / 2),
     };
     this.hp = hp;
+    this.target = null;
   }
 };
