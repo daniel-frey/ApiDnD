@@ -1,3 +1,3 @@
-![DND](assets/dnd.png) AlexaDnD
+![DND](assets/dnd.png) ApiDnD
 ===
 
