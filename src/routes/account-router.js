@@ -1,9 +1,12 @@
 'use strict';
 
-const expres = require('express');
+const express = require('express');
 const bodyParser = require('body-parser');
 const HttpError = require('http-errors');
 
 const Account = require('../models/account');
 const logger = require('../lib/logger');
-const
+const basicAccMiddleware = require('../lib/basic-account-middleware');
+
+const jsonParser = bodyParser.json();
+const router = module.exports = new express.router();
