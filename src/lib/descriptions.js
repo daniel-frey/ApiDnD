@@ -7,8 +7,9 @@
 // encounter
 //
 
+const roomDescriptions = module.exports = {};
 
-let roomDescriptions = [
+roomDescriptions.dungeonDescriptions = [
   {
     roomName: 'Entrance of the Tomb of Horrors',
     description: 'Bright, brilliant colors are to be seen everywhere, the stones and pigments undimmed by the passage of decades. The floor of the corridor is a colorful mosaic of stone, with a distinct winding path of red tiles about two feet wide snaking its way south down the corridor.  No stonework can be seen on the walls or the ceiling twenty feet above, for some cement or plaster has been smoothed over all of these surfaces and then illustrated. The scenes show fields with kine grazing, workers of various races and strange human-animal mixtures--pig human, ape-human, and dog-human--going about various tasks. Certain of the frescoes show rooms of some building--a library filled with many books and scrolls, the door of a torture chamber, and a wizard\'s work room. There are chairs, windows, boxes, bales, doors, chests, birds, bats, spiders, and all manner of things shown on the walls.',
@@ -115,7 +116,7 @@ let roomDescriptions = [
     encounter: true,
   },
   {
-    roomName: 'Magical Secret Door',
+    roomName: 'Magical Door',
     description: 'This door has been very well hidden.',
     connectingRooms: ['Laboratory and Mummy Preparation Room'],
     traps: false,
@@ -124,7 +125,7 @@ let roomDescriptions = [
   {
     roomName: 'Laboratory and Mummy Preparation Room',
     description: 'The walls of this room are lined with shelves. Old jars filled with dust and impotent ingredients of all sorts. There is a large desk and stool, two workbenches, and two mummy preparation tables.',
-    connectingRooms: ['Magical Secret Door'],
+    connectingRooms: ['Magical Door'],
     traps: false,
     encounter: false,
   },
