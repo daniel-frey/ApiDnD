@@ -26,7 +26,6 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "aws-sdk-mock": "^4.2.0",
     "eslint": "^5.5.0",
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-plugin-import": "^2.14.0",
@@ -36,8 +35,6 @@
     "superagent": "^4.0.0-beta.5"
   },
   "dependencies": {
-    "ask-cli": "^1.4.4",
-    "aws-sdk": "^2.328.0",
     "bcrypt": "^3.0.1",
     "body-parser": "^1.18.3",
     "dotenv": "^6.0.0",
