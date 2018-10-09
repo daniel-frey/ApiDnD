@@ -13,7 +13,7 @@ accountMock.pCreateMock = () => {
     email: faker.internet.email(),
   };
 
-  return Account.create(mock.request.username, mock.request.password, mock.request.email)
+  return Account.create(mock.request.username, mock.request.email, mock.request.password)
     .then((createdAccount) => {
       mock.account = createdAccount;
       return createdAccount.pCreateToken();

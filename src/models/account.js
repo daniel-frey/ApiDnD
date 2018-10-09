@@ -1,5 +1,6 @@
 'use strict';
 
+require('dotenv').config();
 const mongoose = require('mongoose');
 const crypto = require('crypto');
 const jsonWebToken = require('jsonwebtoken');
@@ -37,8 +38,6 @@ const accountSchema = new mongoose.Schema({
     ref: 'character',
   },
 });
-
-module.exports = mongoose.Model('account', accountSchema);
 
 function pCreateToken() {
   this.tokenSeed = crypto.randomBytes(TOKEN_SEED_LENGTH).toString('hex');
