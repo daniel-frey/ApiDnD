@@ -57,7 +57,7 @@ module.exports = function secondAttack() {
 
 module.exports = function improvedCrit() {
   if (charClass.name === 'Fighter' && charClass.level >= 10) {
-    // stuff for crit goes here 
+    // stuff for improved crit goes here 
   }
 };
 
