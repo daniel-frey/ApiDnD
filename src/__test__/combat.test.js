@@ -6,13 +6,13 @@ const combat = require('../lib/combat');
 const Creature = require('../models/creature');
 const Dice = require('../lib/dice');
 const server = require('../lib/server');
+const accountMock = require('./lib/account-mock');
 
 describe('combat test', () => {
   beforeAll(server.start);
   afterAll(server.stop);
   beforeEach(charMock.pCleanCategoryMocks);
-  afterEach(charMock.pCleanCategoryMocks);
-
+  beforeEach(accountMock.pCleanAccountMocks);
 
   test('combat between player and a random monster', () => {
     const kobold = new Creature({
