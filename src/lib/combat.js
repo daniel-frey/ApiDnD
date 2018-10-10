@@ -1,5 +1,24 @@
 'use strict';
 
+/**
+ * @function combat()
+ * makes the player and enemy targets of each other and engages them in synchronous combat.
+ * the combat takes place over rounds until someone dies or runs. 
+ * calls attackPlayer and attackEnemy back and forth, basically, until a victory/defeat
+ * condition is reached. 
+ * @param {object} player - the player character, as a property of the character schema.
+ * @param {object} enemy - the enemy creature, as a property of the creature class.
+ * @callback initRoll() - rolls for initiative. decides who goes first.
+ * @callback combatInit() - calls @callback initRoll() and runs attack functions for winner.
+ * @callback lootPhase() - directs player into explore state and gives player items in inventory.
+ * @callback playerDeath() - kills the player off and deletes their character from db.
+ * @callback higherMod() - in the event of an attack, uses the higher mod between dex or str.
+ * @callback isDead() - state-checking function that analyzes if someone in the fight dies.
+ * @callback hitRoll(bonus) - rolls for hit in a dnd 5th edition fashion.
+ * @callback attackPlayer(attacker) - simulates an attack from the player-side.
+ * @callback attackEnemy(enemy) - simulates an attack from enemy-side.
+ */
+
 const logger = require('./logger');
 const die = require('./diceset');
 
@@ -71,24 +90,24 @@ function attackEnemy(enemy) {
 
 
 module.exports = function combat(player, enemy) {
-  function initRoll(stand, adversary) {
-    const standInit = hitRoll(stand.class.absMod.dex);
-    logger.log(logger.INFO, `${stand.class.name} rolls ${standInit} for initiative.`);
-    const adversaryInit = hitRoll(adversary.absMod.dex);
-    logger.log(logger.INFO, `${adversary.name} rolls ${adversaryInit} for initiative.`);
-    if (standInit >= adversaryInit) {
-      logger.log(logger.INFO, `${stand.class.name} wins initiative.`);
+  function initRoll() {
+    const playerInit = hitRoll(player.class.absMod.dex);
+    logger.log(logger.INFO, `${player.class.name} rolls ${player.cit} for initiative.`);
+    const enemyInit = hitRoll(enemy.absMod.dex);
+    logger.log(logger.INFO, `${enemy.name} rolls ${enemyInit} for initiative.`);
+    if (playerInit >= enemyInit) {
+      logger.log(logger.INFO, `${player.class.name} wins initiative.`);
       return true;
     }
-    logger.log(logger.INFO, `${adversary.name} wins initiative.`);
+    logger.log(logger.INFO, `${enemy.name} wins initiative.`);
     return false;
   }
-  function combatInit(char, opp) {
-    if (initRoll(char, opp)) {
+  function combatInit() {
+    if (initRoll(player, enemy)) {
       // first round actions go here when we code them.
-      attackPlayer(char);
+      attackPlayer(player);
     } else {
-      attackEnemy(opp);
+      attackEnemy(enemy);
     }
   }
   let rounds = 1;
