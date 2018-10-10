@@ -1,7 +1,6 @@
 'use strict';
 
 const dungeonMover = require('../lib/dungeon-traversal');
-
 const dungeonDescriptions = require('../lib/descriptions');
 
 describe('dungeon-traversal.js', () => {
