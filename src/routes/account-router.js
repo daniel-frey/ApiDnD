@@ -34,7 +34,7 @@ router.post('/api/signup', jsonParser, (request, response, next) => {
 // ============================================================================
 // ACCOUNT LOG-IN
 // ============================================================================
-router.get('api/login', basicAccMiddleware, (request, response, next) => {
+router.get('/api/login', basicAccMiddleware, (request, response, next) => {
   if (!request.account) {
     return next(new HttpError(400, 'bad request'));
   }
