@@ -16,6 +16,7 @@ encounters.creatureDescriptions = [
     wisdom: 10,
     charisma: 7,
     challenge_rating: 0.5,
+    experience: 100,
     actions:
       [{
         damage_bonus: 2,
@@ -51,6 +52,7 @@ encounters.creatureDescriptions = [
     wisdom: 3,
     charisma: 1,
     challenge_rating: 1,
+    experience: 200,
     actions: [{
       attack_bonus: 0,
       desc: 'The armor makes two melee attacks.',
@@ -76,6 +78,7 @@ encounters.creatureDescriptions = [
     wisdom: 11,
     charisma: 10,
     challenge_rating: 8,
+    experience: 3900,
     actions: [
       {
         attack_bonus: 0,
@@ -109,6 +112,7 @@ encounters.creatureDescriptions = [
     wisdom: 11,
     charisma: 14,
     challenge_rating: 2,
+    experience: 450,
     actions: [
       {
         attack_bonus: 0,
@@ -150,6 +154,7 @@ encounters.creatureDescriptions = [
     wisdom: 12,
     charisma: 4,
     challenge_rating: 0,
+    experience: 5,
     actions: [
       {
         damage_bonus: 1,
@@ -172,6 +177,7 @@ encounters.creatureDescriptions = [
     wisdom: 13,
     charisma: 11,
     challenge_rating: 0.25,
+    experience: 50,
     actions: [
       {
         damage_bonus: 1,
@@ -199,6 +205,7 @@ encounters.creatureDescriptions = [
     wisdom: 12,
     charisma: 14,
     challenge_rating: 8,
+    experience: 3900,
     actions: [
       {
         attack_bonus: 0,
@@ -244,6 +251,7 @@ encounters.creatureDescriptions = [
     wisdom: 11,
     charisma: 10,
     challenge_rating: 0.125,
+    experience: 25,
     actions: [
       {
         damage_bonus: 1,
@@ -267,6 +275,7 @@ encounters.creatureDescriptions = [
     wisdom: 13,
     charisma: 6,
     challenge_rating: 1,
+    experience: 200,
     actions: [
       {
         attack_bonus: 0,
@@ -294,6 +303,7 @@ encounters.creatureDescriptions = [
     wisdom: 14,
     charisma: 12,
     challenge_rating: 6,
+    experience: 2300,
     actions: [
       {
         attack_bonus: 0,
@@ -335,6 +345,7 @@ encounters.creatureDescriptions = [
     wisdom: 5,
     charisma: 1,
     challenge_rating: 0.25,
+    experience: 50,
     actions: [
       {
         damage_bonus: 1,
@@ -357,6 +368,7 @@ encounters.creatureDescriptions = [
     wisdom: 11,
     charisma: 7,
     challenge_rating: 2,
+    experience: 450,
     actions: [
       {
         attack_bonus: 0,
@@ -391,6 +403,7 @@ encounters.creatureDescriptions = [
     wisdom: 6,
     charisma: 1,
     challenge_rating: 2,
+    experience: 450,
     actions: [
       {
         damage_dice: '3d6',
@@ -417,6 +430,7 @@ encounters.creatureDescriptions = [
     wisdom: 12,
     charisma: 17,
     challenge_rating: 4,
+    experience: 1100,
     actions: [
       {
         damage_bonus: 3,
@@ -455,6 +469,7 @@ encounters.creatureDescriptions = [
     wisdom: 10,
     charisma: 6,
     challenge_rating: 1,
+    experience: 200,
     actions: [
       {
         damage_bonus: 2,
@@ -482,6 +497,7 @@ encounters.creatureDescriptions = [
     wisdom: 12,
     charisma: 4,
     challenge_rating: 0.25,
+    experience: 50,
     actions: [
       {
         damage_bonus: 1,
@@ -505,6 +521,7 @@ encounters.creatureDescriptions = [
     wisdom: 8,
     charisma: 8,
     challenge_rating: 0.25,
+    experience: 25,
     actions: [
       {
         damage_bonus: 2,
@@ -535,6 +552,7 @@ encounters.creatureDescriptions = [
     wisdom: 13,
     charisma: 6,
     challenge_rating: 3,
+    experience: 700,
     actions: [
       {
         damage_bonus: 3,
@@ -563,6 +581,7 @@ encounters.creatureDescriptions = [
     wisdom: 10,
     charisma: 9,
     challenge_rating: 0.5,
+    experience: 100,
     actions: [
       {
         damage_bonus: 1,
@@ -592,6 +611,7 @@ encounters.creatureDescriptions = [
     wisdom: 12,
     charisma: 14,
     challenge_rating: 1,
+    experience: 200,
     actions: [
       {
         damage_bonus: 3,
@@ -619,6 +639,7 @@ encounters.creatureDescriptions = [
     wisdom: 13,
     charisma: 8,
     challenge_rating: 2,
+    experience: 450,
     actions: [
       {
         damage_bonus: 3,
@@ -648,6 +669,7 @@ encounters.creatureDescriptions = [
     wisdom: 10,
     charisma: 12,
     challenge_rating: 3,
+    experience: 700,
     actions: [
       {
         attack_bonus: 0,
@@ -680,6 +702,7 @@ encounters.creatureDescriptions = [
     wisdom: 10,
     charisma: 6,
     challenge_rating: 3,
+    experience: 700,
     actions: [
       {
         damage_bonus: 2,
@@ -702,6 +725,7 @@ encounters.creatureDescriptions = [
     wisdom: 12,
     charisma: 6,
     challenge_rating: 0,
+    experience: 5,
     actions: [
       {
         attack_bonus: 0,
@@ -722,6 +746,7 @@ encounters.creatureDescriptions = [
     wisdom: 3,
     charisma: 1,
     challenge_rating: 2,
+    experience: 450,
     actions: [
       {
         damage_bonus: 3,
@@ -744,6 +769,7 @@ encounters.creatureDescriptions = [
     wisdom: 8,
     charisma: 5,
     challenge_rating: 0.25,
+    experience: 50,
     actions: [
       {
         damage_bonus: 2,
@@ -773,6 +799,7 @@ encounters.creatureDescriptions = [
     wisdom: 10,
     charisma: 2,
     challenge_rating: 0,
+    experience: 5,
     actions: [
       {
         damage_bonus: 1,
@@ -795,6 +822,7 @@ encounters.creatureDescriptions = [
     charisma: 4,
     damage_vulnerabilities: '',
     challenge_rating: 0.25,
+    experience: 50,
     actions: [
       {
         damage_dice: '2d4',
@@ -816,6 +844,7 @@ encounters.creatureDescriptions = [
     wisdom: 7,
     charisma: 1,
     challenge_rating: 0.5,
+    experience: 100,
     actions: [
       {
         damage_dice: '4d4',
@@ -837,6 +866,7 @@ encounters.creatureDescriptions = [
     wisdom: 14,
     charisma: 15,
     challenge_rating: 5,
+    experience: 1800,
     actions: [
       {
         damage_bonus: 3,
@@ -864,6 +894,7 @@ encounters.creatureDescriptions = [
     wisdom: 6,
     charisma: 5,
     challenge_rating: 0.25,
+    experience: 50,
     actions: [
       {
         damage_bonus: 1,
