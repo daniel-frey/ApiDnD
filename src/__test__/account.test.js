@@ -59,4 +59,16 @@ describe('Account authentication tests', () => {
         expect(response.body.token).toBeTruthy();
       });
   });
+
+  test('return a 400 status code if the request is not valid', () => {
+    return accountMock.pCreateMock()
+      .then((mock) => {
+        return superagent.get(`${API_URL}/api/login`)
+          .auth(mock.request.incorrectUsername, mock.request.password);
+      })
+      .then(Promise.reject)
+      .catch((response) > {
+        expect(response.status).toEqual(400);
+      });
+  });
 });
