@@ -30,9 +30,12 @@ function isDead(player, enemy) {
 }
 
 function hitRoll(bonus = 0) {
-  return die.d20.roll() + bonus;
+  const initialDie = die.d20.roll(); 
+  if (initialDie === 20) {
+    return 'crit';
+  }
+  return initialDie + bonus;
 }
-
 
 function attackPlayer(attacker) {
   const hitVal = hitRoll(higherMod(attacker.class.absMod));
@@ -41,6 +44,11 @@ function attackPlayer(attacker) {
     const damage = attacker.class.weapon.roll();
     logger.log(logger.INFO, `${attacker.class.name} deals ${damage} damage to ${attacker.class.target.name}`);
     attacker.class.target.hp -= damage;
+    logger.log(logger.INFO, `${attacker.class.target.name}'s hp is now ${attacker.class.target.hp}`);
+  } else if (hitVal === 'crit') {
+    const criticalHit = attacker.class.weapon.roll(2);
+    logger.log(logger.INFO, `Critical Hit! ${attacker.class.name} deals ${criticalHit} damage to ${attacker.class.target.name}`);
+    attacker.class.target.hp -= criticalHit;
     logger.log(logger.INFO, `${attacker.class.target.name}'s hp is now ${attacker.class.target.hp}`);
   }
 }
@@ -52,6 +60,11 @@ function attackEnemy(enemy) {
     const damage = enemy.attacks.roll();
     logger.log(logger.INFO, `${enemy.name} deals ${damage} damage to ${enemy.target.class.name}`);
     enemy.target.class.hp -= damage;
+    logger.log(logger.INFO, `${enemy.target.class.name}'s hp is now ${enemy.target.class.hp}`);
+  } else if (hitVal === 'crit') {
+    const criticalHitEnemy = enemy.attacks.roll(2);
+    logger.log(logger.INFO, `Critical Hit! ${enemy.name} deals ${criticalHitEnemy} damage to ${enemy.target.class.name}`);
+    enemy.target.class.hp -= criticalHitEnemy;
     logger.log(logger.INFO, `${enemy.target.class.name}'s hp is now ${enemy.target.class.hp}`);
   }
 }
@@ -82,7 +95,6 @@ module.exports = function combat(player, enemy) {
   player.class.target = enemy;
   enemy.target = player;
   combatInit(player, enemy);
-  rounds += 1;
   while (!isDead(player, enemy)) {
     logger.log(logger.INFO, `round ${rounds}`);
     attackPlayer(player);
