@@ -1,7 +1,7 @@
 
 # Created by https://www.gitignore.io/api/node,macos,windows,webstorm,visualstudiocode
 
-./idea
+.idea
 db/
 
 ### macOS ###
