@@ -10,7 +10,6 @@ const HttpError = require('http-errors');
 const HASH_ROUNDS = 8;
 const TOKEN_SEED_LENGTH = 128;
 
-
 const accountSchema = new mongoose.Schema({
   username: {
     type: String,
@@ -41,7 +40,6 @@ const accountSchema = new mongoose.Schema({
 
 function pCreateToken() {
   this.tokenSeed = crypto.randomBytes(TOKEN_SEED_LENGTH).toString('hex');
-
   return this.save()
     .then((savedAccount) => {
       return jsonWebToken.sign({
@@ -67,7 +65,6 @@ function pVerifyPassword(password) {
 accountSchema.methods.pCreateToken = pCreateToken;
 accountSchema.methods.pVerifyPassword = pVerifyPassword;
 const Account = module.exports = mongoose.model('account', accountSchema);
-
 
 Account.create = (username, email, password) => {
   return bcrypt.hash(password, HASH_ROUNDS)
