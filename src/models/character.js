@@ -17,6 +17,10 @@ const characterSchema = mongoose.Schema({
     required: true,
     ref: 'account',
   },
+  currentRoom: {
+    type: Object,
+    required: true,
+  },
 });
 
 module.exports = mongoose.model('character', characterSchema);
