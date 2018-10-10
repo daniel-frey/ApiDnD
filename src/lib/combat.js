@@ -33,6 +33,7 @@ function hitRoll(bonus = 0) {
   return die.d20.roll() + bonus;
 }
 
+
 function attackPlayer(attacker) {
   const hitVal = hitRoll(higherMod(attacker.class.absMod));
   logger.log(logger.INFO, `${attacker.class.name} rolls ${hitVal}.`);
@@ -55,10 +56,33 @@ function attackEnemy(enemy) {
   }
 }
 
+
 module.exports = function combat(player, enemy) {
+  function initRoll(stand, adversary) {
+    const standInit = hitRoll(stand.class.absMod.dex);
+    logger.log(logger.INFO, `${stand.class.name} rolls ${standInit} for initiative.`);
+    const adversaryInit = hitRoll(adversary.absMod.dex);
+    logger.log(logger.INFO, `${adversary.name} rolls ${adversaryInit} for initiative.`);
+    if (standInit >= adversaryInit) {
+      logger.log(logger.INFO, `${stand.class.name} wins initiative.`);
+      return true;
+    }
+    logger.log(logger.INFO, `${adversary.name} wins initiative.`);
+    return false;
+  }
+  function combatInit(char, opp) {
+    if (initRoll(char, opp)) {
+      // first round actions go here when we code them.
+      attackPlayer(char);
+    } else {
+      attackEnemy(opp);
+    }
+  }
   let rounds = 1;
   player.class.target = enemy;
   enemy.target = player;
+  combatInit(player, enemy);
+  rounds += 1;
   while (!isDead(player, enemy)) {
     logger.log(logger.INFO, `round ${rounds}`);
     attackPlayer(player);
@@ -70,6 +94,7 @@ module.exports = function combat(player, enemy) {
   }
   return 'big meme';
 };
+
 
 // what do we need in order to test this?
 // player mock.
