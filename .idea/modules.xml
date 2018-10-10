@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/AlexaDnD.iml" filepath="$PROJECT_DIR$/.idea/AlexaDnD.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/ApiDnD.iml" filepath="$PROJECT_DIR$/.idea/ApiDnD.iml" />
     </modules>
   </component>
 </project>
