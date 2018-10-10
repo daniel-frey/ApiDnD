@@ -1,12 +1,28 @@
 'use strict';
 
 const Creature = require('../models/creature');
+const encounters = require('./encounters');
+const logger = require('./logger');
 
 module.exports = class Encounter {
   constructor(challengeRating) {
-    // pull random monster from db
-    this.creature = new Creature({}, challengeRating, '', '', '', '');
-    // tbc. we need to take the information from the random db in an asynchronous action, and then create a creature for the encounter. 
-    // ex new Creature({monster.str, dex, int, con, wis, cha}, challengeRating, monster.name, monster.hp, monster.ac)
+    const filteredList = encounters.creatureDescriptions.filter((value) => {
+      return value.challenge_rating === challengeRating;
+    });
+    logger.log(logger.INFO, 'filteredList', filteredList);
+    const chosenCreature = filteredList[Math.floor(Math.random() * filteredList.length)];
+    logger.log(logger.INFO, 'chosenIdx', chosenCreature);
+    this.creature = new Creature({
+      str: chosenCreature.strength,
+      int: chosenCreature.intelligence,
+      dex: chosenCreature.dexterity,
+      con: chosenCreature.constitution,
+      wis: chosenCreature.wisdom,
+      cha: chosenCreature.charisma,
+    }, challengeRating, 
+    chosenCreature.name, 
+    chosenCreature.actions[0], 
+    chosenCreature.hit_points, 
+    chosenCreature.armor_class);
   }
 };
