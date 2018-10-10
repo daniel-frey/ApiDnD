@@ -2,6 +2,7 @@
 
 const encounters = module.exports = {};
 
+
 encounters.creatureDescriptions = [
   {
     name: 'Gnoll',
