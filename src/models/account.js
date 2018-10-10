@@ -10,7 +10,7 @@ const HttpError = require('http-errors');
 const HASH_ROUNDS = 8;
 const TOKEN_SEED_LENGTH = 128;
 
-const accountSchema = new mongoose.Schema({
+const accountSchema = mongoose.Schema({
   username: {
     type: String,
     required: true,
@@ -31,11 +31,15 @@ const accountSchema = new mongoose.Schema({
     required: true,
     unique: true,
   },
-  character: {
-    type: mongoose.Schema.Types.ObjectId,
-    unique: true,
-    ref: 'character',
-  },
+  character: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'character',
+    },
+  ],
+},
+{
+  usePushEach: true,
 });
 
 function pCreateToken() {

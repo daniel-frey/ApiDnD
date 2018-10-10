@@ -15,8 +15,8 @@ describe('Account authentication tests', () => {
     return superagent.post(`${API_URL}/api/signup`)
       .send({
         username: faker.lorem.words(1),
-        email: faker.internet.email(),
         password: faker.lorem.words(1),
+        email: faker.internet.email(),
       })
       .then((response) => {
         expect(response.status).toEqual(200);
@@ -31,7 +31,7 @@ describe('Account authentication tests', () => {
       })
       .then(Promise.reject)
       .catch((response) => {
-        expect(response.status).toEqual(400);
+        expect(response.status).toEqual(401);
       });
   });
 
