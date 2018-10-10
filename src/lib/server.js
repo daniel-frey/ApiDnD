@@ -12,7 +12,7 @@ const app = express();
 app.use(errorMiddleware);
 app.use(loggerMiddleware);
 
-const PORT = process.env.port || 8080;
+const PORT = process.env.port || 3000;
 
 const server = module.exports = {};
 let internalServer = null;
