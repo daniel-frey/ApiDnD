@@ -138,7 +138,6 @@ encounters.creatureDescriptions = [
     ],
   },
   {
-    index: 42,
     name: 'Bat',
     armor_class: 12,
     hit_points: 1,
@@ -692,7 +691,6 @@ encounters.creatureDescriptions = [
   },
   {
     name: 'Raven',
-    size: 'Tiny',
     armor_class: 12,
     hit_points: 1,
     hit_dice: '1d4',
@@ -712,7 +710,6 @@ encounters.creatureDescriptions = [
     ],
   },
   {
-    index: 244,
     name: 'Rug of Smothering',
     armor_class: 12,
     hit_points: 33,
