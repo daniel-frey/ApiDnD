@@ -67,7 +67,7 @@ describe('Account authentication tests', () => {
           .auth(mock.request.incorrectUsername, mock.request.password);
       })
       .then(Promise.reject)
-      .catch((response) > {
+      .catch((response) => {
         expect(response.status).toEqual(400);
       });
   });
