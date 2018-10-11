@@ -1,7 +1,7 @@
 
 # Created by https://www.gitignore.io/api/node,macos,windows,webstorm,visualstudiocode
 
-./idea
+.idea
 db/
 
 ### macOS ###
@@ -51,6 +51,7 @@ lib-cov
 
 # Coverage directory used by tools like istanbul
 coverage
+db
 
 # nyc test coverage
 .nyc_output
@@ -160,6 +161,7 @@ cmake-build-*/
 
 # IntelliJ
 out/
+.idea/
 
 # mpeltonen/sbt-idea plugin
 .idea_modules/
@@ -217,6 +219,8 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+
+
 
 
 # End of https://www.gitignore.io/api/node,macos,windows,webstorm,visualstudiocode

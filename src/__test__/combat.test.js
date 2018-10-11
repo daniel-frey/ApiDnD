@@ -14,7 +14,6 @@ describe('combat test', () => {
   beforeEach(charMock.pCleanCategoryMocks);
   beforeEach(accountMock.pCleanAccountMocks);
 
-
   test('combat between player and a random monster', () => {
     const kobold = new Creature({
       str: 7,
