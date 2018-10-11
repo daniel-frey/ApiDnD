@@ -1,11 +1,11 @@
 'use strict';
 
 module.exports = class CharClass {
-  constructor(abilities, name, hp, weaponname, weapon, ac) {
+  constructor(abilities, name, hp, weaponName, weapon, ac) {
     this.name = name;
     this.level = 1;
     this.hp = hp;
-    this.weaponname = weaponname;
+    this.weaponName = weaponName;
     this.weapon = weapon;
     this.abs = abilities;
     this.absMod = {
@@ -19,5 +19,6 @@ module.exports = class CharClass {
     this.ac = ac + this.absMod.dex;
     this.combat = false;
     this.target = null;
+    this.inventory = [];
   }
 };

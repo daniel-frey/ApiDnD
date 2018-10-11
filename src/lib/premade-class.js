@@ -3,7 +3,9 @@
 const CharClass = require('../models/class');
 const Dice = require('../lib/dice');
 
-const fighter = new CharClass({
+const premades = module.exports = {};
+
+premades.fighter = new CharClass({
   str: 18,
   dex: 17,
   int: 10,
@@ -13,7 +15,7 @@ const fighter = new CharClass({
 },
 'Fighter', 10, '2H Sword', new Dice(10), 13);
 
-const rogue = new CharClass({
+premades.rogue = new CharClass({
   str: 12,
   dex: 17,
   int: 12,
@@ -23,7 +25,7 @@ const rogue = new CharClass({
 },
 'Rogue', 10, 'Longsword', new Dice(6), 10);
 
-const wizard = new CharClass({
+premades.wizard = new CharClass({
   str: 7,
   dex: 10,
   int: 18,
@@ -33,6 +35,6 @@ const wizard = new CharClass({
 },
 'Wizard', 6, 'Quarterstaff', new Dice(6), 10);
 
-console.log(fighter);
-console.log(rogue);
-console.log(wizard);
+console.log(premades.fighter);
+console.log(premades.rogue);
+console.log(premades.wizard);
