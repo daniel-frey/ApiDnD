@@ -2,12 +2,14 @@
 
 const dungeonDescriptions = require('./descriptions');
 const roomsByName = require('./rooms');
+const logger = require('./logger');
 
 const dungeonMover = module.exports = {};
 
-dungeonMover.dungeonTraversal = (playDirection, charObj) => {
+dungeonMover.dungeonTraversal = (roomAlias, charObj) => {
   charObj.currentRoom = dungeonDescriptions.dungeonDescriptions[
-    roomsByName.roomList.indexOf(playDirection)
+    roomsByName.roomList.indexOf(roomAlias)
   ];
+  logger.log(logger.INFO, charObj.currentRoom);
   return charObj.currentRoom.description;
 };

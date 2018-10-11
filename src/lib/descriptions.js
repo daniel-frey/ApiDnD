@@ -1,5 +1,8 @@
 'use strict';
 
+const Encounter = require('./decisive-encounter');
+const diceSet = require('./diceset');
+
 const roomDescriptions = module.exports = {};
 
 roomDescriptions.dungeonDescriptions = [
@@ -50,6 +53,19 @@ roomDescriptions.dungeonDescriptions = [
     connectingRooms: ['Fresco of the Wizardly Work Room'],
     alias: 'Gargoyle',
     traps: {},
+    encounter: new Encounter({
+      str: 15,
+      int: 6,
+      dex: 11,
+      con: 16,
+      wis: 11,
+      cha: 7,
+    }, 
+    2, 
+    'Gargoyle', 
+    diceSet.d6,
+    52,
+    15),
   },
   {
     roomName: 'Complex of Secret Doors',
