@@ -4,7 +4,7 @@ const Creature = require('../models/creature');
 const encounters = require('./encounters');
 const logger = require('./logger');
 
-module.exports = class Encounter {
+module.exports = class RandomEncounter {
   constructor(challengeRating) {
     const filteredList = encounters.creatureDescriptions.filter((value) => {
       return value.challenge_rating === challengeRating;

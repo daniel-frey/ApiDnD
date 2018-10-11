@@ -49,7 +49,7 @@ function isDead(player, enemy) {
 }
 
 function hitRoll(bonus = 0) {
-  const initialDie = die.d20.roll(); 
+  const initialDie = die.d20.roll() + 1;
   if (initialDie === 20) {
     return 'crit';
   }
@@ -60,7 +60,7 @@ function attackPlayer(attacker) {
   const hitVal = hitRoll(higherMod(attacker.class.absMod));
   logger.log(logger.INFO, `${attacker.class.name} rolls ${hitVal}.`);
   if (hitVal > attacker.class.target.ac) {
-    const damage = attacker.class.weapon.roll();
+    const damage = attacker.class.weapon.roll() + higherMod(attacker.class.absMod);
     logger.log(logger.INFO, `${attacker.class.name} deals ${damage} damage to ${attacker.class.target.name}`);
     attacker.class.target.hp -= damage;
     logger.log(logger.INFO, `${attacker.class.target.name}'s hp is now ${attacker.class.target.hp}`);
@@ -88,11 +88,10 @@ function attackEnemy(enemy) {
   }
 }
 
-
 module.exports = function combat(player, enemy) {
   function initRoll() {
     const playerInit = hitRoll(player.class.absMod.dex);
-    logger.log(logger.INFO, `${player.class.name} rolls ${player.cit} for initiative.`);
+    logger.log(logger.INFO, `${player.class.name} rolls ${playerInit} for initiative.`);
     const enemyInit = hitRoll(enemy.absMod.dex);
     logger.log(logger.INFO, `${enemy.name} rolls ${enemyInit} for initiative.`);
     if (playerInit >= enemyInit) {
@@ -125,7 +124,6 @@ module.exports = function combat(player, enemy) {
   }
   return 'big meme';
 };
-
 
 // what do we need in order to test this?
 // player mock.

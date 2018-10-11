@@ -8,7 +8,7 @@ describe('dungeon-traversal.js', () => {
     const char = {
       currentRoom: dungeonDescriptions.dungeonDescriptions[0],
     };
-    dungeonMover.dungeonTraversal('The Arch of Mist', char);
+    dungeonMover.dungeonTraversal('Archway', char);
     expect(char.currentRoom.roomName).toEqual('The Arch of Mist');
   });
 
@@ -16,8 +16,8 @@ describe('dungeon-traversal.js', () => {
     const char = {
       currentRoom: dungeonDescriptions.dungeonDescriptions[0],
     };
-    dungeonMover.dungeonTraversal('The Arch of Mist', char);
-    dungeonMover.dungeonTraversal('The Face of the Great Green Devil', char);
+    dungeonMover.dungeonTraversal('Archway', char);
+    dungeonMover.dungeonTraversal('Face', char);
     expect(char.currentRoom.roomName).toEqual('The Face of the Great Green Devil');
   });
 });
