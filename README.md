@@ -1,6 +1,7 @@
 ![DND](assets/dnd.png) ApiDnD ![travis build status](https://travis-ci.com/fncreative/ApiDnD.svg?branch=master)
 ===
 
+
 ## Overview
 
 A command line Dungeons and Dragons text adventure! Immerse yourself in the Tomb of Horrors, a vast and terrible crypt full of treasure and traps. If you're brave and lucky, you may leave a rich man. If not, you'll be dead. 
@@ -14,6 +15,8 @@ A command line Dungeons and Dragons text adventure! Immerse yourself in the Tomb
  * Save the game and access your character and progress later on
  
 The game utilizes the [Dungeons and Dragons api](http://www.dnd5eapi.co/), along with character input to generate a DnD style dungeon complete with random enemy encounters, boss battles, skill rolls, and character progression.
+
+
 
 ## Usage
 
