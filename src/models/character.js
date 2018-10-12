@@ -17,7 +17,7 @@ const characterSchema = mongoose.Schema({
     required: true,
     ref: 'account',
   },
-  currentRoom: {
+  currentRoom: { 
     type: Object,
     required: true,
   },

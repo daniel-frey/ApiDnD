@@ -10,6 +10,7 @@ const API_URL = `http://localhost:${process.env.PORT}`;
 describe('Account authentication tests', () => {
   beforeAll(server.start);
   afterAll(server.stop);
+  beforeEach(accountMock.pCleanAccountMocks);
 
   test('return a 200 status code and a token', () => {
     return superagent.post(`${API_URL}/api/signup`)

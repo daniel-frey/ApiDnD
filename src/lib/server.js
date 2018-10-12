@@ -7,19 +7,21 @@ const errorMiddleware = require('./error-middleware');
 const loggerMiddleware = require('./logger-middleware');
 const logger = require('./logger');
 const accountRoutes = require('../routes/account-router');
+const gameRoutes = require('../routes/game-router');
 
 const app = express();
 
 app.use(errorMiddleware);
 app.use(loggerMiddleware);
 app.use(accountRoutes);
+app.use(gameRoutes);
 
 app.all('*', (request, response) => {
   logger.log(logger.INFO, 'Returning a 404 error from catch-all route');
   return response.sendStatus(404);
 });
 
-const PORT = process.env.port || 3000;
+const PORT = process.env.PORT || 3000;
 
 const server = module.exports = {};
 let internalServer = null;

@@ -15,12 +15,13 @@ describe('IT\'S TIME TO TEST THE VIDEO GAME', () => {
   test('MAKE THE CHARACTER, PLAY THE VIDEO GAME', () => {
     return charMock.pCreateCharacterMock()
       .then((betty) => {
+        logger.log(logger.INFO, betty);
         logger.log(logger.INFO, betty.currentRoom);
         dungeonMover.dungeonTraversal('Fresco', betty);
         dungeonMover.dungeonTraversal('Gargoyle', betty);
         expect(betty.currentRoom.roomName).toEqual('Gargoyle Lair');
         logger.log(logger.INFO, betty.currentRoom.encounter);
-        expect(combat(betty, betty.currentRoom.encounter.creature)).toEqual('big meme');
+        expect(typeof combat(betty, betty.currentRoom.encounter.creature)).toEqual('object');
       });
   });
 });
