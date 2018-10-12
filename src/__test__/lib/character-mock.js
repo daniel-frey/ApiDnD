@@ -7,6 +7,7 @@ const dungeonDescriptions = require('../../lib/descriptions');
 const Dice = require('../../lib/dice');
 const logger = require('../../lib/logger');
 
+
 const abilities = {
   str: 18,
   dex: 17,

@@ -76,11 +76,10 @@ router.put('/api/fight/confirm/:id', jsonParser, basicAccMiddleware, (request, r
   // to use their potions, what their combat behavior is, etc. right now.
   return Character.findById(request.params.id)
     .then((character) => {
-      // if(character)
       logger.log(logger.INFO, character);
-      const combatResult = combat(character._doc, character._doc.currentRoom.encounter.creature);
+      const results = combat(character._doc, character._doc.currentRoom.encounter.creature);
       character.save();
-      return response.json({ combatResult });
+      return response.json(results);
     })
     .catch(() => {
       return next(new HttpError(404), 'character not found.');
