@@ -15,6 +15,7 @@ describe('IT\'S TIME TO TEST THE VIDEO GAME', () => {
   test('MAKE THE CHARACTER, PLAY THE VIDEO GAME', () => {
     return charMock.pCreateCharacterMock()
       .then((betty) => {
+        logger.log(logger.INFO, betty);
         logger.log(logger.INFO, betty.currentRoom);
         dungeonMover.dungeonTraversal('Fresco', betty);
         dungeonMover.dungeonTraversal('Gargoyle', betty);

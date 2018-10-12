@@ -22,12 +22,14 @@
 const logger = require('./logger');
 const die = require('./diceset');
 
-function lootPhase() {
-  logger.log(logger.INFO, 'player wins');
+function diceRoll(objWSides, times = 1) {
+  let total = 0;
+  for (let i = 0; i < times; i++) {
+    total += Math.floor(Math.random() * objWSides.sides) + 1;
+  }
+  return total;
 }
-function playerDeath() {
-  logger.log(logger.INFO, 'player loses');
-}
+
 function higherMod(absModObj) {
   if (absModObj.str <= absModObj.dex) {
     return absModObj.dex;
@@ -37,12 +39,9 @@ function higherMod(absModObj) {
 
 function isDead(player, enemy) {
   if (player.class.hp <= 0) {
-    player.remove();
-    playerDeath();
     return true;
   }
   if (enemy.hp <= 0) {
-    lootPhase();
     return true;
   }
   return false;
@@ -60,12 +59,12 @@ function attackPlayer(attacker) {
   const hitVal = hitRoll(higherMod(attacker.class.absMod));
   logger.log(logger.INFO, `${attacker.class.name} rolls ${hitVal}.`);
   if (hitVal > attacker.class.target.ac) {
-    const damage = attacker.class.weapon.roll() + higherMod(attacker.class.absMod);
+    const damage = diceRoll(attacker.class.weapon) + higherMod(attacker.class.absMod);
     logger.log(logger.INFO, `${attacker.class.name} deals ${damage} damage to ${attacker.class.target.name}`);
     attacker.class.target.hp -= damage;
     logger.log(logger.INFO, `${attacker.class.target.name}'s hp is now ${attacker.class.target.hp}`);
   } else if (hitVal === 'crit') {
-    const criticalHit = attacker.class.weapon.roll(2);
+    const criticalHit = diceRoll(attacker.class.weapon, 2);
     logger.log(logger.INFO, `Critical Hit! ${attacker.class.name} deals ${criticalHit} damage to ${attacker.class.target.name}`);
     attacker.class.target.hp -= criticalHit;
     logger.log(logger.INFO, `${attacker.class.target.name}'s hp is now ${attacker.class.target.hp}`);
@@ -76,12 +75,12 @@ function attackEnemy(enemy) {
   const hitVal = hitRoll(higherMod(enemy.absMod));
   logger.log(logger.INFO, `${enemy.name} rolls ${hitVal}.`);
   if (hitVal > enemy.target.class.ac) {
-    const damage = enemy.attacks.roll();
+    const damage = diceRoll(enemy.attacks);
     logger.log(logger.INFO, `${enemy.name} deals ${damage} damage to ${enemy.target.class.name}`);
     enemy.target.class.hp -= damage;
     logger.log(logger.INFO, `${enemy.target.class.name}'s hp is now ${enemy.target.class.hp}`);
   } else if (hitVal === 'crit') {
-    const criticalHitEnemy = enemy.attacks.roll(2);
+    const criticalHitEnemy = diceRoll(enemy.attacks, 2);
     logger.log(logger.INFO, `Critical Hit! ${enemy.name} deals ${criticalHitEnemy} damage to ${enemy.target.class.name}`);
     enemy.target.class.hp -= criticalHitEnemy;
     logger.log(logger.INFO, `${enemy.target.class.name}'s hp is now ${enemy.target.class.hp}`);
