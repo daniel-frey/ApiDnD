@@ -151,7 +151,7 @@ npm run test
 
 ## Authors
 
-[**Tyler Anyan**](https://github.com/tganyan) | [**Tom North**](https://github.com/tnorth93) | [**Diego Ramos**](https://github.com/diego-ramos130) | [**Daniel Frey**](https://github.com/fncreative) | [**Wyatt Peffley**](https://github.com/peffles)
+[**Tyler Anyan**](https://github.com/tganyan) | [**Tom North**](https://github.com/tnorth93) | [**Diego Ramos**](https://github.com/diego-ramos130) | [**Daniel Frey**](https://github.com/fncreative) | [**Wyatt Pefley**](https://github.com/peffles)
 
 ## License
 
