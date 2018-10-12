@@ -1,8 +1,16 @@
-![DND](assets/dnd.png) ApiDnD ![travis build status](https://travis-ci.com/fncreative/ApiDnD.svg?branch=master)
-===
+```
+  ____                                            ___     ____                                       _ ____  
+ |  _ \ _   _ _ __   __ _  ___  ___  _ __  ___   ( _ )   |  _ \ _ __ __ _  __ _  ___  _ __  ___     | / ___| 
+ | | | | | | | '_ \ / _` |/ _ \/ _ \| '_ \/ __|  / _ \/\ | | | | '__/ _` |/ _` |/ _ \| '_ \/ __| _  | \___ \ 
+ | |_| | |_| | | | | (_| |  __/ (_) | | | \__ \ | (_>  < | |_| | | | (_| | (_| | (_) | | | \__ \| |_| |___) |
+ |____/ \__,_|_| |_|\__, |\___|\___/|_| |_|___/  \___/\/ |____/|_|  \__,_|\__, |\___/|_| |_|___(_)___/|____/
+```
+![DND](assets/dnd.png)
+___
 
 
-## Overview
+# Build Status: ![travis build status](https://travis-ci.com/fncreative/ApiDnD.svg?branch=master)
+## Overview   
 
 A command line Dungeons and Dragons text adventure! Immerse yourself in the Tomb of Horrors, a vast and terrible crypt full of treasure and traps. If you're brave and lucky, you may leave a rich man. If not, you'll be dead. 
 #### The user can:
@@ -113,6 +121,14 @@ npm run dbOn
 npm run test
 ```
 
+## Character and Creature Models
+* The charatcer and creature models are built with a variety attributes that range depending on the class for players, and challenge rating (CR) for creatures.
+
+### Creature Stats Example:
+![creature](assets/gargoyle.png)
+
+### Charater Stats Example:
+![betty](assets/betty.png)
 ## ERD
 
 ![edr-diagram](./assets/erd.jpeg)
