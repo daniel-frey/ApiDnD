@@ -45,7 +45,7 @@ describe('USER PLAYS VIDEO GAME', () => {
                             return superagent.put(`${API_URL}/api/fight/confirm/${mock.account.character[0]._id}`)
                               .auth(mock.request.username, mock.request.password)
                               .then((result) => {
-                                expect(result.body.combatResult).toEqual('big meme');
+                                expect(typeof result.body).toEqual('object');
                               });
                           });
                       });

@@ -21,7 +21,7 @@ app.all('*', (request, response) => {
   return response.sendStatus(404);
 });
 
-const PORT = process.env.port || 3000;
+const PORT = process.env.PORT || 3000;
 
 const server = module.exports = {};
 let internalServer = null;

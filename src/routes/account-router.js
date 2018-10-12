@@ -3,6 +3,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const HttpError = require('http-errors');
+const faker = require('faker');
 
 const Account = require('../models/account');
 const logger = require('../lib/logger');
@@ -10,6 +11,7 @@ const basicAccMiddleware = require('../lib/basic-account-middleware');
 const Character = require('../models/character');
 const premade = require('../lib/premade-class');
 const dungeon = require('../lib/descriptions');
+
 
 const jsonParser = bodyParser.json();
 const router = module.exports = new express.Router();
@@ -26,7 +28,7 @@ router.post('/api/signup', jsonParser, (request, response, next) => {
     .then((createdAccount) => {
       delete request.body.password;
       return new Character({
-        name: 'Betty',
+        name: faker.name.firstName(),
         class: premade.fighter,
         currentRoom: dungeon.dungeonDescriptions[0],
         account: createdAccount._id,
@@ -48,10 +50,10 @@ router.post('/api/signup', jsonParser, (request, response, next) => {
         },
       );
     })
-    .catch(next);
+    .catch(error => next(error));
 });
 
-// ============================================================================
+// ===============================+=============================================
 // ACCOUNT LOG-IN
 // ============================================================================
 router.get('/api/login', basicAccMiddleware, (request, response, next) => {

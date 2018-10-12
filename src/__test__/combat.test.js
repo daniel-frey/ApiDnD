@@ -30,7 +30,7 @@ describe('combat test', () => {
     8);
     return charMock.pCreateCharacterMock()
       .then((mock) => {
-        expect(combat(mock, kobold)).toEqual('big meme');
+        expect(typeof combat(mock, kobold)).toEqual('object');
       });
   });
 });

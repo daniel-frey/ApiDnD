@@ -21,7 +21,7 @@ describe('IT\'S TIME TO TEST THE VIDEO GAME', () => {
         dungeonMover.dungeonTraversal('Gargoyle', betty);
         expect(betty.currentRoom.roomName).toEqual('Gargoyle Lair');
         logger.log(logger.INFO, betty.currentRoom.encounter);
-        expect(combat(betty, betty.currentRoom.encounter.creature)).toEqual('big meme');
+        expect(typeof combat(betty, betty.currentRoom.encounter.creature)).toEqual('object');
       });
   });
 });

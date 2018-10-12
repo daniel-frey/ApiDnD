@@ -40,9 +40,14 @@ function higherMod(absModObj) {
 
 function isDead(player, enemy) {
   if (player.class.hp <= 0) {
+    returnValue.push(`~${player.name} has died.~`);
     return true;
   }
   if (enemy.hp <= 0) {
+    returnValue.push(`~${enemy.name} has died.~`);
+    returnValue.push('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~');
+    returnValue.push('~Victory!~');
+
     return true;
   }
   return false;
@@ -114,7 +119,7 @@ module.exports = function combat(player, enemy) {
   enemy.target = player;
   combatInit(player, enemy);
   while (!isDead(player, enemy)) {
-    returnValue.push(`round ${rounds}`);
+    returnValue.push(`~Round ${rounds}~`);
     attackPlayer(player);
     if (isDead(player, enemy)) {
       break;

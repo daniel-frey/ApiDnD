@@ -76,7 +76,7 @@ router.put('/api/fight/confirm/:id', jsonParser, basicAccMiddleware, (request, r
   // to use their potions, what their combat behavior is, etc. right now.
   return Character.findById(request.params.id)
     .then((character) => {
-      logger.log(logger.INFO, character);
+      logger.log(logger.INFO, 'character info,', character);
       const results = combat(character._doc, character._doc.currentRoom.encounter.creature);
       character.save();
       return response.json(results);
