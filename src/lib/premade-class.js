@@ -1,7 +1,7 @@
 'use strict';
 
 const CharClass = require('../models/class');
-const Dice = require('../lib/dice');
+const diceset = require('../lib/diceset');
 
 const premades = module.exports = {};
 
@@ -13,7 +13,7 @@ premades.fighter = new CharClass({
   wis: 10,
   cha: 8,
 },
-'Fighter', 10, '2H Sword', new Dice(10), 13);
+'Fighter', 10, '2H Sword', diceset.d10, 13);
 
 premades.rogue = new CharClass({
   str: 12,
@@ -23,7 +23,7 @@ premades.rogue = new CharClass({
   wis: 10,
   cha: 12,
 },
-'Rogue', 10, 'Longsword', new Dice(6), 10);
+'Rogue', 10, 'Longsword', diceset.d6, 10);
 
 premades.wizard = new CharClass({
   str: 7,
@@ -33,7 +33,7 @@ premades.wizard = new CharClass({
   wis: 15,
   cha: 13,
 },
-'Wizard', 6, 'Quarterstaff', new Dice(6), 10);
+'Wizard', 6, 'Quarterstaff', diceset.d6, 10);
 
 console.log(premades.fighter);
 console.log(premades.rogue);
