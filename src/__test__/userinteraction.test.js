@@ -16,7 +16,6 @@ describe('USER PLAYS VIDEO GAME', () => {
   test('user creates account, chooses character, plays video game.', () => {
     return accCharMock.pUserMock()
       .then((mock) => {
-        logger.log(logger.INFO, mock.account.character);
         return superagent.get(`${API_URL}/api/status/${mock.account.character[0]._id}`)
           .auth(mock.request.username, mock.request.password)
           .then((status) => {
