@@ -1,6 +1,7 @@
 ![DND](assets/dnd.png) ApiDnD ![travis build status](https://travis-ci.com/fncreative/ApiDnD.svg?branch=master)
 ===
 
+
 ## Overview
 
 A command line Dungeons and Dragons text adventure! Immerse yourself in the Tomb of Horrors, a vast and terrible crypt full of treasure and traps. If you're brave and lucky, you may leave a rich man. If not, you'll be dead. 
@@ -13,68 +14,108 @@ A command line Dungeons and Dragons text adventure! Immerse yourself in the Tomb
  * Battle creatures that vary in difficulty and scale with the progression of the character
  * Save the game and access your character and progress later on
  
-The game utilizes the [Dungeons and Dragons api](http://www.dnd5eapi.co/), along with character input to generate a DnD style dungeon complete with random enemy encounters, boss battles, skill rolls, and character progression.
+The game utilizes real D&D creatures accessed from our own api, along with character input to generate a D&D style dungeon complete with random enemy encounters, boss battles, skill rolls, and character progression.
+
+
 
 ## Usage
+#### Prerequisites:
 
-Below are some example commands to kickoff and control your adventure:
+You must have **NodeJS** installed along with **NPM** and **MongoDB**. 
+
+##### So, you want to play some API DnD? Here’s how you do it. 
+
+1 - Fork / Clone / Download this repo.
+
+2 - from the folder you cloned into, run
 ```
-Open APIdnd
->> Welcome to Dungeons and Dragons! Would you like to start a new game or resume an existing game?
+npm -i
+``` 
+
+
+3 - You will need 3 terminal windows open to play the game, so get those ready now.
+
+4 - Once the dependencies are installed, open one of your other terminal windows and run: 
 ```
+npm run dbOn
+``` 
+This will fire up the mongo database needed to run the game and house your character.
+
+5 - In the first terminal window you had open type the following at the command prompt.
 ```
->> There are chairs, windows, boxes, bales, doors, chests, birds, bats, spiders, and all manner of things shown on the walls. You see a doorway to your right with a plaque labeled The Arch of Mist and another doorway further down the leads to what appears to be a Wizardly work room. Where do you go? 
-    >> The Arch of Mist
-    >> Wizardly work room
-    >> Search the room for traps
-Search the room for traps
->> You fail to make a saving throw on disarming the Poison dart trap. You are hit for 2 damage. Your health is currently 8.
+node main.js
+``` 
+This will start start the server and you should see 
 ```
-```
->> You've encountered a kobold! Get ready to fight...
-Battle tactics: magic-missile(2), use-potion(20)
-    >> You cast magic missile
-    >> Kobold take 2 damage from missile
-    >> Kobold attacks
-    >> Kobold gets a critical hit for 4 damage
-        >> Your health is 6
+Server is up on PORT 3000
 ```
 
-## Getting Started
-
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
-
-### Prerequisites
-
-You must have **NodeJS** installed along with either **NPM** or **Yarn**. 
-
-### Installing
-
-Copy the link from the github repository
-In the command line, navigate to the parent directory where you want to store this project
-In the command line, type:
+6 - In the third and final terminal window you’ll enter all of your information
+	
+* first - create an account with the following command: 
 ```
-git clone <repository url>
+HTTP POST localhost:3000/api/signup username:<enter name here> password:<enter password here>
+```  
+and hit return.
+
+You should get a response with an ID and a token. Keep that ID handy, you’ll need it for the following commands!
+
+* second - Let’s show where you are in the dungeon: 
 ```
-Once the project files are there, navigate to **/lambda/custom** and type:
+HTTP PUT -a <username>:<password> localhost:/3000/api/status
 ```
-npm install
+
+This will show you your character stats, and the description of the current room. See that text that is in the [ ] ? That is where you can move to! Let’s do that now! 
+
+ ```
+ HTTP PUT -a <username>:<password> localhost:3000/api/move/Fresco
+ ```
+
+You’ll now get a new room and the other connecting rooms (in the [ ] ). 
+
+Let’s get you into a quick battle! Type the following: 
 ```
-or
+HTTP PUT -a <username>:<password> localhost:3000/api/move/Gargoyle
 ```
-yarn i
+
+This will bring up the combat phase! To enter combat you type the following:
+
+```
+HTTP PUT -a <username>:<password> localhost:/3000/fight/confirm/<YOUR ID>
+```
+Combat will ensue! How did it turn out for you? You can continue to traverse the dungeon with the same commands as before!
+
+You are also able to flee from combat by sending the same PUT request to:
+
+```
+localhost:3000/api/run/<YOUR ID>
 ```
 
 ## Running the tests
 
-* Test case example
+* Account authentication tests (proper status codes and tokens)
+* Combat test (basic combat functionality)
+* Creature tests (creating real D&D creature)
+* Dice test (simulating real D&D dice rolls)
+* Dungeon traversal (moving the character object through the dungeon)
+* Encounter (producing a random monster)
+* Gameplay (moving the character through the dungeon and engaging in battle)
+* Traps (functionality for detecting, being hit by, and disarming traps)
+* User Interaction (the full game play, from character creation to monster encounters in the dungeon)
+
+##### To run all tests, first make sure your mongo database is running:
 ```
-TEST EXAMPLE
+npm run dbOn
+```
+##### then run the test script:
+
+```
+npm run test
 ```
 
 ## ERD
 
-![edr-diagram](placeholder.jpg)
+![edr-diagram](./assets/erd.jpeg)
 
 ## Built With
 
@@ -94,7 +135,7 @@ TEST EXAMPLE
 
 ## Authors
 
-[**Tyler Anyan**](http://tyleranyan.com/) # [**Tom North**]() # [**Diego Ramos**]() # [**Daniel Frey**]() # [**Wyatt Peffley**]()
+[**Tyler Anyan**](https://github.com/tganyan) | [**Tom North**](https://github.com/tnorth93) | [**Diego Ramos**](https://github.com/diego-ramos130) | [**Daniel Frey**](https://github.com/fncreative) | [**Wyatt Peffley**](https://github.com/peffles)
 
 ## License
 
