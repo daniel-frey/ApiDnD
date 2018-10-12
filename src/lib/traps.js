@@ -4,11 +4,11 @@ const dice = require('./diceset');
 
 const traps = module.exports = {};
 
-traps.checkRoom = (charObj, stat) => {
+traps.checkRoom = (charObj) => {
   const rolled = dice.d20.roll();
-  const charMod = charObj.class.absMod[stat] + rolled;
+  const charMod = charObj.class.absMod.wis + rolled;
   const currentTrapDC = charObj.currentRoom.traps.saveDC;
-  if (charObj.currentRoom.traps === {}) {
+  if (!charObj.currentRoom.traps) {
     return 'The room is safe';
   }
   if (charMod < currentTrapDC) {
@@ -17,9 +17,9 @@ traps.checkRoom = (charObj, stat) => {
   return traps.disableTrap(charObj);
 };
 
-traps.disableTrap = (charObj, stat) => {
+traps.disableTrap = (charObj) => {
   const rolled = dice.d20.roll();
-  const charMod = charObj.class.absMod[stat] + rolled;
+  const charMod = charObj.class.absMod.wis + rolled;
   const currentTrap = charObj.currentRoom.traps;
   const currentTrapDC = currentTrap.saveDC;
   if (charMod < currentTrapDC) {
