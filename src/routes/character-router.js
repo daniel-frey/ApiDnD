@@ -5,6 +5,7 @@ const bodyParser = require('body-parser');
 const HttpError = require('http-errors');
 const Character = require('../models/character');
 const logger = require('../lib/logger');
+const bearerAuthMiddleware = require('../lib/bearer-auth-middleware');
 
 const jsonParser = bodyParser.json();
 const router = module.exports = new express.Router();
@@ -12,7 +13,7 @@ const router = module.exports = new express.Router();
 // ====================================================================
 // GET
 // ====================================================================
-router.get('/api/characters/:id', jsonParser, (request, response, next) => {
+router.get('/api/characters', bearerAuthMiddleware, jsonParser, (request, response, next) => {
   return Character.findById(request.params.id)
     .then((character) => {
       if (character) {
@@ -40,7 +41,7 @@ router.post('/api/characters', jsonParser, (request, response, next) => {
 // ====================================================================
 // DELETE
 // ====================================================================
-router.delete('/api/characters/:id', (request, response, next) => {
+router.delete('/api/characters', bearerAuthMiddleware, (request, response, next) => {
   return Character.findByIdAndRemove(request.params.id)
     .then((character) => {
       if (character) {
@@ -56,7 +57,7 @@ router.delete('/api/characters/:id', (request, response, next) => {
 // ====================================================================
 // PUT
 // ====================================================================
-router.put('/api/characters/:id', jsonParser, (request, response, next) => {
+router.put('/api/characters', bearerAuthMiddleware, jsonParser, (request, response, next) => {
   const updateOptions = {
     runValidators: true,
     new: true,

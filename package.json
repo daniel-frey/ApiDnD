@@ -13,9 +13,9 @@
     "test": "eslint . && jest --coverage --forceExit --runInBand",
     "lint": "eslint .",
     "dbDevOn": "mkdir -p ./testdb && mongod --dbpath ./testdb",
-    "dbOn": "mkdir -p ./db && mongod --dbpath ./db",
+    "dbOn": "mkdir db && mongod --dbpath db",
     "dbOff": "killall mongod",
-    "start": "node src/index.js"
+    "start": "node src/main.js"
   },
   "jest": {
     "setupFiles": [
