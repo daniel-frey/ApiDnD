@@ -2,6 +2,7 @@
 
 require('dotenv').config();
 const express = require('express');
+const cors = require('cors');
 const mongoose = require('mongoose');
 const errorMiddleware = require('./error-middleware');
 const loggerMiddleware = require('./logger-middleware');
@@ -11,6 +12,7 @@ const gameRoutes = require('../routes/game-router');
 
 const app = express();
 
+app.use(cors());
 app.use(errorMiddleware);
 app.use(loggerMiddleware);
 app.use(accountRoutes);
